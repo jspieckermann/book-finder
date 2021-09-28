@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchResult } from '../model/model';
-import { SearchService } from '../services/search.service';
+import { FormBuilder } from '@angular/forms';
+import { BookService } from '../services/book.service';
 
 @Component({
   selector: 'app-book-search',
@@ -10,12 +11,23 @@ import { SearchService } from '../services/search.service';
 export class BookSearchComponent implements OnInit {
 
   result: SearchResult = {} as SearchResult;
+  
+  filterForm = this.formBuilder.group({
+    type: '',
+    content: ''
+  });
 
-  constructor(private searchService: SearchService) {
-    this.searchService.getBookByIsbn('1234').subscribe((data: SearchResult) => this.result = data);
+  constructor(private bookService: BookService, private formBuilder: FormBuilder) {
+    this.bookService.currentResult.subscribe((data: SearchResult) => this.result = data);
   }
     
   ngOnInit(): void {
+  }
+
+  onSubmit(): void {
+    console.log(this.filterForm.value);
+    this.bookService.applyIsbnFilter(this.filterForm.value.content);
+    this.filterForm.reset();
   }
 
 }

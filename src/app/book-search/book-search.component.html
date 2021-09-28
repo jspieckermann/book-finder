@@ -1,1 +1,11 @@
 <p>{{result.totalItems}}</p>
+
+<form [formGroup]='filterForm' (ngSubmit)="onSubmit()">
+    <div>
+        <label for="type">Typ</label>
+        <input id="type" type="text" formControlName="type">
+        <label for="content">Text</label>
+        <input id="content" type="text" formControlName="content">
+        <button class="button" type="submit">Suchen</button>
+    </div>
+</form>
