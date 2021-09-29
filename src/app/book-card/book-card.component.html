@@ -1,2 +1,7 @@
-<p>{{item.volumeInfo.title}}</p>
-<app-book-details></app-book-details>
+<div>
+    <p>{{item.volumeInfo.title}}</p>
+    <p>{{item.volumeInfo.authors}}</p>
+    <p>{{item.volumeInfo.industryIdentifiers[0].identifier}}</p>
+    <p *ngIf="item.volumeInfo.imageLinks">{{item.volumeInfo.imageLinks.thumbnail}}</p>
+    <app-book-details></app-book-details>
+</div>
