@@ -1,4 +1,11 @@
-<p>book-list works!</p>
-<p *ngFor="let item of result.items">
-    <app-book-card [item]=item></app-book-card>
-</p>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6 col-xl-4" *ngFor="let item of result.items">
+            <app-book-card [item]=item></app-book-card>
+        </div>
+    </div>
+</div>
+

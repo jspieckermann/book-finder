@@ -1,4 +1,9 @@
-div {
-    background-color: aquamarine;
-    padding: 5px;
+.card {
+    margin: 5px;
+    padding: 10px;
 }
+
+img {
+    border-radius: 10px;
+    width: 50px;
+  }

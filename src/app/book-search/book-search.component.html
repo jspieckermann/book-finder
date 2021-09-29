@@ -1,13 +1,21 @@
 <p>{{result.totalItems}}</p>
 
 <form [formGroup]='filterForm' (ngSubmit)="onSubmit()">
-    <div>
-        <select name="filter" id="filter" formControlName="type">
-            <option value={{filterType.ISBN}}>{{filterType.ISBN}}</option>
-            <option value={{filterType.AUTHOR}}>{{filterType.AUTHOR}}</option>
-            <option value={{filterType.TITLE}}>{{filterType.TITLE}}</option>
-        </select>
-        <input id="content" type="text" formControlName="content">
-        <button class="button" type="submit">Suchen</button>
+    <div class="container">
+        <div class="row gy-3">
+          <div class="col-md-4">
+            <select class="form-select" name="filter" id="filter" formControlName="type">
+                <option value={{filterType.ISBN}}>{{filterType.ISBN}}</option>
+                <option value={{filterType.AUTHOR}}>{{filterType.AUTHOR}}</option>
+                <option value={{filterType.TITLE}}>{{filterType.TITLE}}</option>
+            </select>
+          </div>
+          <div  class="col-md-4">
+            <input id="content" type="text" class="form-control" formControlName="content">
+          </div>
+          <div  class="col-md-4">
+            <button class="btn btn-primary" type="submit">Suchen</button>
+          </div>
+        </div>
     </div>
 </form>
