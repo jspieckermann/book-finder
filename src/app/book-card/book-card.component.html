@@ -1,24 +1,16 @@
-<div class="card">
-    <div class="container">
-        <div class="row">
-            <div class="col-auto">
-                <img src="{{item.volumeInfo.imageLinks.thumbnail}}" class="card-img-top" *ngIf="item.volumeInfo.imageLinks" alt="...">
-            </div>
-            <div class="col">
-                <h6 class="card-title">{{item.volumeInfo.title}}</h6>
-                <p class="card-subtitle text-muted">{{item.volumeInfo.authors}}</p>
-                <span class="small" *ngIf="item.volumeInfo.industryIdentifiers">ISBN {{item.volumeInfo.industryIdentifiers[0].identifier}}</span>
-                <br>
-                <span class="small">Erschienen {{item.volumeInfo.publishedDate}}</span>
-            </div>
+<div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-4">
+       
+        <img src="{{item.volumeInfo.imageLinks.thumbnail}}" class="img-fluid rounded-start" *ngIf="item.volumeInfo.imageLinks" alt="...">
+      </div>
+      <div class="col-8">
+        <div class="card-body">
+          <h6 class="card-title">{{item.volumeInfo.title}}</h6>
+          <p class="card-subtitle text-muted">{{item.volumeInfo.authors}}</p>
+          <p class="card-text text-muted" *ngIf="item.volumeInfo.industryIdentifiers">ISBN {{item.volumeInfo.industryIdentifiers[0].identifier}}</p>
+          <p class="card-text"><small class="text-muted">Erschienen {{item.volumeInfo.publishedDate}}</small></p>
         </div>
-        <div class="row justify-content-end">
-            <div class="col-9">
-                
-            </div>  
-            <div class="col-3">
-                <button type="button" class="btn btn-link small">Mehr</button>
-            </div>  
-        </div>
+      </div>
     </div>
-</div>
+  </div>
