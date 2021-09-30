@@ -6,9 +6,19 @@
             </div>
             <div class="col">
                 <h6 class="card-title">{{item.volumeInfo.title}}</h6>
-                <h6 class="card-subtitle mb-2 text-muted">{{item.volumeInfo.authors}}</h6>
-                <p class="small">{{item.volumeInfo.industryIdentifiers[0].identifier}}</p>
+                <p class="card-subtitle text-muted">{{item.volumeInfo.authors}}</p>
+                <span class="small" *ngIf="item.volumeInfo.industryIdentifiers">ISBN {{item.volumeInfo.industryIdentifiers[0].identifier}}</span>
+                <br>
+                <span class="small">Erschienen {{item.volumeInfo.publishedDate}}</span>
             </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-9">
+                
+            </div>  
+            <div class="col-3">
+                <button type="button" class="btn btn-link small">Mehr</button>
+            </div>  
         </div>
     </div>
 </div>
