@@ -29,7 +29,7 @@ export interface IndustryIdentifier {
 }
 
 export enum FilterType {
-    ISBN = 'Isbn',
-    AUTHOR = 'Autor',
-    TITLE = 'Tiltel'
+    ISBN = 'ISBN',
+    AUTHOR = 'Author',
+    TITLE = 'Title'
 }

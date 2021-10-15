@@ -4,5 +4,6 @@
             <app-book-card [item]=item></app-book-card>
         </div>
     </div>
+    <ngb-pagination *ngIf="showPaginator()" [(page)]="page" [collectionSize]="result.totalItems" [maxSize]="5" [rotate]="true" [ellipses]="false" (pageChange)="onPageChanged()"></ngb-pagination>
 </div>
 

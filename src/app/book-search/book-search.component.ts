@@ -27,9 +27,8 @@ export class BookSearchComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.filterForm.value);
     this.bookService.applyFilter(this.filterForm.value.type,
-      this.filterForm.value.content);
+      this.filterForm.value.content, 0);
   }
 
 }
