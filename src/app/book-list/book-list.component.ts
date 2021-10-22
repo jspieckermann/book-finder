@@ -10,7 +10,7 @@ import { BookService } from '../services/book.service';
 })
 export class BookListComponent implements OnInit, OnDestroy {
   
-  subscription: Subscription = {} as Subscription; 
+  private subscription: Subscription = {} as Subscription; 
   result: SearchResult = {} as SearchResult;
   page: number = 1;
 

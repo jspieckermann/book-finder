@@ -5,5 +5,16 @@
 }
 
 img {
-    width: 90px;
-  }
+    width: 60px;
+    height: 85px;
+}
+
+.btn {
+    padding: 0px;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    left: 92%;
+    bottom: 32px;
+    margin-bottom: -32px;
+}

@@ -12,7 +12,7 @@ export class BookService {
   private readonly urlIsbn = this.url + 'q=isbn:';
   private readonly urlAuthor = this.url + 'q=inauthor:';
   private readonly urlTitel = this.url + 'q=intitle:';
-  private readonly urlStartIndex = '&startIndex=';
+  private readonly paramStartIndex = 'startIndex';
 
   private dataSource = new BehaviorSubject<SearchResult>({} as SearchResult);
   
@@ -38,11 +38,13 @@ export class BookService {
     this.currentFilterText = text;
     this.currentFilterType = filterType;
     this.currentStartIndex = startIndex;
-    this.filterAndNotifySubscribers(url + this.urlStartIndex + startIndex);
+    let myMap: Map<string, string> = new Map();
+    myMap.set(this.paramStartIndex, startIndex + '');
+    this.filterAndNotifySubscribers(url, myMap);
   }
 
-  private filterAndNotifySubscribers(url: string) {
-    this.http.doGet(url).subscribe((data) => this.dataSource.next(data as SearchResult));
+  private filterAndNotifySubscribers(url: string, param: Map<string, string>) {
+    this.http.doGet(url, param).subscribe((data) => this.dataSource.next(data as SearchResult));
   }
 
   private modifyIsbn(isbn: string): string {

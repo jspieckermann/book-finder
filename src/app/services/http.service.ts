@@ -24,7 +24,6 @@ export class HttpService {
   }
 
   doGet<T>(url: string, parameter?: Map<string, string>): Observable<T> {
-    console.log(url);
     if (parameter == null) {
       return this.http.get<T>(url);
     } else {

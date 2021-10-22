@@ -10,7 +10,6 @@ import { BookService } from '../services/book.service';
 })
 export class BookSearchComponent implements OnInit {
 
-  result: SearchResult = {} as SearchResult;
   filterType = FilterType;
   
   filterForm = this.formBuilder.group({
@@ -19,7 +18,7 @@ export class BookSearchComponent implements OnInit {
   });
 
   constructor(private bookService: BookService, private formBuilder: FormBuilder) {
-    this.bookService.currentResult.subscribe((data: SearchResult) => this.result = data);
+  
   }
     
   ngOnInit(): void {

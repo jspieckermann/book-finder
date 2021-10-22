@@ -1,16 +1,27 @@
 <div class="card mb-3">
     <div class="row g-0">
-      <div class="col-4">
-       
-        <img src="{{item.volumeInfo.imageLinks.thumbnail}}" class="img-fluid rounded-start" *ngIf="item.volumeInfo.imageLinks" alt="...">
+      <div class="col-2">
+        <img src={{getThumbnail()}} class="img-fluid rounded-start" alt="...">
       </div>
-      <div class="col-8">
+      <div class="col-10">
         <div class="card-body">
-          <h6 class="card-title">{{item.volumeInfo.title}}</h6>
-          <p class="card-subtitle text-muted">{{item.volumeInfo.authors}}</p>
-          <p class="card-text text-muted" *ngIf="item.volumeInfo.industryIdentifiers">ISBN {{item.volumeInfo.industryIdentifiers[0].identifier}}</p>
-          <p class="card-text"><small class="text-muted">Erschienen {{item.volumeInfo.publishedDate}}</small></p>
+          <h6 class="card-title">{{getTitle()}}</h6>
+          <p class="card-subtitle text-muted">{{getAuthors()}}</p>
+          <p class="card-subtitle text-muted">{{getIsbn()}}</p>
+          <div *ngIf="expanded">
+            <br>
+            Published date
+            <p class="text-muted" >{{getPublishedDate()}}</p>
+            Page count
+            <p class="text-muted" >{{getPageCount()}}</p>
+            Description
+            <p class="text-muted" >{{getDescription()}}</p>
+          </div>
         </div>
+
       </div>
     </div>
+    <button class="btn" (click)="toggleExpand()">
+      <i [ngClass]="{'bi bi-chevron-down': !expanded, 'bi bi-chevron-up strong': expanded }"></i>
+    </button>
   </div>
