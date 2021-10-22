@@ -31,7 +31,11 @@ export class BookListComponent implements OnInit, OnDestroy {
   }
 
   showPaginator(): boolean {
-    return this.result.totalItems > this.result.items.length;
+    let show = false;
+    if (this.result.items) {
+      show = this.result.totalItems > this.result.items.length
+    }
+    return show;
   }
 
   onPageChanged(): void {
