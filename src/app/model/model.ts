@@ -12,7 +12,7 @@ export interface VolumeInfo {
     authors: string [];
     publishedDate: string;
     description: string;
-    pageCount: number;
+    pageCount: string;
     categories: string [];
     imageLinks: ImageLinks;
     industryIdentifiers: IndustryIdentifier [];
