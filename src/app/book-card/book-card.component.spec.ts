@@ -98,13 +98,4 @@ describe('BookCardComponent', () => {
     expect(component.expanded).toBeFalse();
   });
 
-  it('should return the correct expanded state on button press', () => {
-    let button = fixture.debugElement.nativeElement.querySelector('#expander');
-    expect(component.expanded).toBeFalse();
-    button.click();
-    expect(component.expanded).toBeTrue();
-    button.click();
-    expect(component.expanded).toBeFalse();
-  });
-
 });
