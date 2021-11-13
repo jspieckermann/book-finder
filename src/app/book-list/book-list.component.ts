@@ -15,9 +15,9 @@ export class BookListComponent implements OnInit, OnDestroy {
   page: number = 1;
 
   constructor(private bookService: BookService) {
-    this.subscription = this.bookService.currentResult.subscribe((data: SearchResult) => {
+    this.subscription = this.bookService.getCurrentResult().subscribe((data: SearchResult) => {
       this.result = data;
-      if (this.page > 1 && this.bookService.currentStartIndex == 0) {
+      if (this.page > 1 && this.bookService.getCurrentFilter().getIndex() == 0) {
         this.page = 1;
       }
     });
@@ -40,7 +40,9 @@ export class BookListComponent implements OnInit, OnDestroy {
 
   onPageChanged(): void {
     let index = (this.page - 1) * this.result.items.length;
-    this.bookService.applyFilter(this.bookService.currentFilterType, this.bookService.currentFilterText, index);
+    let filter = this.bookService.getCurrentFilter();
+    filter.setIndex(index);
+    this.bookService.applyFilter(filter);
   }
 
 }

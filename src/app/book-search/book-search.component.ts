@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FilterType } from '../model/model';
+import { Filter, FilterType } from '../model/model';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BookService } from '../services/book.service';
 
@@ -27,8 +27,8 @@ export class BookSearchComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.bookService.applyFilter(this.filterForm.value.type,
-        this.filterForm.value.content, 0);
+    this.bookService.applyFilter(new Filter(this.filterForm.value.type,
+        this.filterForm.value.content, 0));
   }
 
 }

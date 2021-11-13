@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { FilterType, SearchResult } from '../model/model';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Filter, FilterType, SearchResult } from '../model/model';
 import { HttpService } from './http.service';
 
 @Injectable({
@@ -15,35 +15,38 @@ export class BookService {
   private readonly paramStartIndex = 'startIndex';
 
   private dataSource = new BehaviorSubject<SearchResult>({} as SearchResult);
-  
-  currentResult = this.dataSource.asObservable();
-  currentFilterType: FilterType = {} as FilterType;
-  currentFilterText = '';
-  currentStartIndex = 0;
+  private currentResult = this.dataSource.asObservable();
+  private currentFilter = new Filter();
 
   constructor(private http: HttpService) { }
 
-  applyFilter(filterType: FilterType, text: string, startIndex: number): void {
+  getCurrentResult(): Observable<SearchResult> {
+    return this.currentResult;
+  }
+
+  getCurrentFilter(): Filter {
+    return this.currentFilter;
+  }
+
+  applyFilter(filter: Filter): void {
     let url: string;
-    switch (filterType) {
+    switch (filter.getType()) {
       case FilterType.AUTHOR:
-        url = this.urlAuthor  + this.replaceSpaces(text);
+        url = this.urlAuthor  + this.replaceSpaces(filter.getText());
         break;
       case FilterType.TITLE:
-        url = this.urlTitel + this.replaceSpaces(text);
+        url = this.urlTitel + this.replaceSpaces(filter.getText());
         break;
       default:
-        url = this.urlIsbn + this.modifyIsbn(text);
+        url = this.urlIsbn + this.modifyIsbn(filter.getText());
     }
-    this.currentFilterText = text;
-    this.currentFilterType = filterType;
-    this.currentStartIndex = startIndex;
+    this.currentFilter = filter;
     let myMap: Map<string, string> = new Map();
-    myMap.set(this.paramStartIndex, startIndex + '');
+    myMap.set(this.paramStartIndex, filter.getIndex() + '');
     this.filterAndNotifySubscribers(url, myMap);
   }
 
-  private filterAndNotifySubscribers(url: string, param: Map<string, string>) {
+  private filterAndNotifySubscribers(url: string, param: Map<string, string>): void {
     this.http.doGet(url, param).subscribe((data) => this.dataSource.next(data as SearchResult));
   }
 
