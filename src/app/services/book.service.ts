@@ -8,11 +8,11 @@ import { HttpService } from './http.service';
 })
 export class BookService {
 
-  private readonly url = 'https://www.googleapis.com/books/v1/volumes?';
-  private readonly urlIsbn = this.url + 'q=isbn:';
-  private readonly urlAuthor = this.url + 'q=inauthor:';
-  private readonly urlTitel = this.url + 'q=intitle:';
-  private readonly paramStartIndex = 'startIndex';
+  readonly url = 'https://www.googleapis.com/books/v1/volumes?';
+  readonly urlIsbn = this.url + 'q=isbn:';
+  readonly urlAuthor = this.url + 'q=inauthor:';
+  readonly urlTitel = this.url + 'q=intitle:';
+  readonly paramStartIndex = 'startIndex';
 
   private dataSource = new BehaviorSubject<SearchResult>({} as SearchResult);
   private currentResult = this.dataSource.asObservable();
