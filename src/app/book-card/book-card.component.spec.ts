@@ -21,7 +21,6 @@ describe('BookCardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BookCardComponent);
     component = fixture.componentInstance;
-   
     item = {} as Item;
     volumnInfo = {} as VolumeInfo;
     imageLinks = {} as ImageLinks;
