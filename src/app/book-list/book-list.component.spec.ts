@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BookCardComponent } from '../book-card/book-card.component';
 import { Filter, FilterType, Item, SearchResult, VolumeInfo } from '../model/model';
 import { BookService } from '../services/book.service';
 
@@ -9,7 +10,7 @@ describe('BookListComponent', () => {
   let component: BookListComponent;
   let fixture: ComponentFixture<BookListComponent>;
   let observable = new BehaviorSubject<SearchResult>({} as SearchResult);
-  let filter = new Filter(FilterType.ISBN, '', 0);
+  const filter = new Filter(FilterType.ISBN, '', 0);
 
   const mockedBookService = jasmine.createSpyObj('BookService', ['applyFilter', 'getCurrentResult', 'getCurrentFilter']);
   mockedBookService.getCurrentResult.and.returnValue(observable);
@@ -31,7 +32,7 @@ describe('BookListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BookListComponent ],
+      declarations: [ BookListComponent, BookCardComponent ],
       providers: [{
         provide: BookService,
         useValue: mockedBookService
