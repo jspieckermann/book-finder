@@ -2,6 +2,7 @@
     <div class="container">
         <div class="row gy-3">
           <div class="col-md-4">
+            <label for="filter">Search type</label>
             <select class="form-select" name="filter" id="filter" formControlName="type">
                 <option value={{filterType.ISBN}}>{{filterType.ISBN}}</option>
                 <option value={{filterType.AUTHOR}}>{{filterType.AUTHOR}}</option>
@@ -9,9 +10,10 @@
             </select>
           </div>
           <div  class="col-md-4">
+            <label for="content">Search text</label>
             <input id="content" type="text" class="form-control" formControlName="content">
           </div>
-          <div  class="col-md-4">
+          <div  class="col-md-4 button-div">
             <button id="submitButton" [disabled]="filterForm.invalid" class="btn btn-primary" type="submit">Search</button>
           </div>
         </div>
