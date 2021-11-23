@@ -1,9 +1,11 @@
 <div class="container">
     <div class="row">
-        <ul class="col-12 col-md-6 col-xl-4" *ngFor="let item of result.items">
-            <li><app-book-card [item]=item></app-book-card></li>
+        <ul id="book-list" class="list-unstyled row">
+            <li class="list-item col-12 col-md-6 col-xl-4" *ngFor="let item of result.items">
+                <app-book-card [item]=item></app-book-card>
+            </li>
         </ul>
     </div>
-    <ngb-pagination *ngIf="showPaginator()" [(page)]="page" [collectionSize]="result.totalItems" [maxSize]="5" [rotate]="true" [ellipses]="false" (pageChange)="onPageChanged()"></ngb-pagination>
+    <ngb-pagination id="paginator" *ngIf="showPaginator()" [(page)]="page" [collectionSize]="result.totalItems" [maxSize]="5" [rotate]="true" [ellipses]="false" (pageChange)="onPageChanged()"></ngb-pagination>
 </div>
 
