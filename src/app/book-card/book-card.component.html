@@ -1,7 +1,7 @@
 <div class="card mb-3">
     <div class="row g-0">
       <div class="col-2">
-        <img src={{getThumbnail()}} class="img-fluid rounded-start" alt="...">
+        <img src={{getThumbnail()}} class="img-fluid rounded-start" alt="Book cover">
       </div>
       <div class="col-10">
         <div class="card-body">
@@ -21,7 +21,7 @@
 
       </div>
     </div>
-    <button id="expander" class="btn" (click)="toggleExpand()">
+    <button aria-label="expander" id="expander" class="btn" (click)="toggleExpand()">
       <i [ngClass]="{'bi bi-chevron-down': !expanded, 'bi bi-chevron-up strong': expanded }"></i>
     </button>
   </div>
